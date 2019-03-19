@@ -1,0 +1,14 @@
+apply plugin: 'java'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+}
+
+sourceSets {
+    java {
+        srcDirs 'src'
+    }
+}
