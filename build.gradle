@@ -8,7 +8,9 @@ dependencies {
 }
 
 sourceSets {
-    java {
-        srcDirs 'src'
+    main {
+        resources {
+            srcDirs = ["src/main/java"]
+        }
     }
 }
