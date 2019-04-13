@@ -25,13 +25,14 @@ public class SheetsDB {
     private static final String APPLICATION_NAME = "Project Autodidact";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
+    private static Sheets service = null;
 
     /**
      * Global instance of the scopes required by this quickstart.
      * If modifying these scopes, delete your previously saved tokens/ folder.
      */
     private static final List<String> SCOPES = Collections.singletonList(SheetsScopes.SPREADSHEETS_READONLY);
-    private static final String CREDENTIALS_FILE_PATH = "credentials.json";
+    private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
     /**
      * Creates an authorized Credential object.
@@ -56,30 +57,44 @@ public class SheetsDB {
     }
 
     /**
-     * Prints the names and majors of students in a sample spreadsheet:
-     * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+     * @return List of all the Torrents and null if cannot get Sheet from spreadsheetId.
      */
-    public static void main(String... args) throws IOException, GeneralSecurityException {
-        // Build a new authorized API client service.
-        final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        final String spreadsheetId = "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms";
-        final String range = "Class Data!A2:E";
-        Sheets service = new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-                .setApplicationName(APPLICATION_NAME)
-                .build();
-        ValueRange response = service.spreadsheets().values()
-                .get(spreadsheetId, range)
-                .execute();
-        List<List<Object>> values = response.getValues();
-        if (values == null || values.isEmpty()) {
-            System.out.println("No data found.");
-        } else {
-            System.out.println("Name, Major");
-            for (List row : values) {
-                // Print columns A and E, which correspond to indices 0 and 4.
-                System.out.printf("%s, %s\n", row.get(0), row.get(4));
+    public static List<List<Object>> getListOfTorrents() {
+//        final String spreadsheetId = "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms";
+        final String spreadsheetId = "1nAbRXNpSIC1lJAoD1ZGqyHSnuz74p39yPAreXP74cO4";
+        final String range = "A1:B";
+        try {
+            ValueRange response = getSheetsObject().spreadsheets().values().get(spreadsheetId, range)
+                    .execute();
+            List<List<Object>> values = response.getValues();
+            if (values == null || values.isEmpty()) {
+                System.out.println("No data found.");
+            } else {
+                return values;
+            }
+        } catch (Exception e) {
+            System.err.println("Error Getting Spreadsheet From \"spreadsheetId\":" + spreadsheetId);
+            System.err.println(e.getMessage());
+        }
+        return null;
+    }
+
+    /**
+     * @return Sheets Singleton Object
+     */
+    public static Sheets getSheetsObject() {
+        if (service == null) {
+            // Build a new authorized API client service.
+            try {
+                final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+                return new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+                        .setApplicationName(APPLICATION_NAME)
+                        .build();
+            } catch (IOException | GeneralSecurityException e) {
+                System.err.println(e.getMessage());
             }
         }
+        return service;
     }
 
 }
