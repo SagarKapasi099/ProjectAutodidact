@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 public class Controller {
 
     /**
-     * Wraps Up Running Processes And Exits The Program
+     * Stops Running Processes And Exits The Program
      * @param actionEvent
      */
     public void exit(ActionEvent actionEvent) {
