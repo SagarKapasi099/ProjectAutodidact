@@ -21,6 +21,9 @@ import java.security.GeneralSecurityException;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This Singleton Class Acts As A Database For The Application Using <b>Google Sheets API</b>
+ */
 public class SheetsDB {
     private static final String APPLICATION_NAME = "Project Autodidact";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
