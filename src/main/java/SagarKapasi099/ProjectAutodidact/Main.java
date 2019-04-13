@@ -10,10 +10,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Project Autodidact");
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("View.fxml"));
-            primaryStage.setScene(new Scene(root, 300, 275));
+            Parent root = FXMLLoader.load(getClass().getResource("/View.fxml"));
+            primaryStage.setScene(new Scene(root, 1200, 500));
         } catch (Exception e) {
             System.err.println("Error Loading View");
             System.out.println(e.getMessage());
