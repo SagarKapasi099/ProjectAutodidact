@@ -12,12 +12,18 @@ dependencies {
 
     // BitTorrent
     compile 'com.turn:ttorrent-core:1.5'
+    // https://mvnrepository.com/artifact/com.github.atomashpolskiy/bt-core
+    compile group: 'com.github.atomashpolskiy', name: 'bt-core', version: '1.7'
+
 }
 
 sourceSets {
     main {
-        resources {
+        java {
             srcDirs = ["src/main/java"]
+        }
+        resources {
+            srcDirs = ["src/main/resources"]
         }
     }
 }
