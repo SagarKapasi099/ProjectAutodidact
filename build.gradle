@@ -5,13 +5,12 @@ repositories {
 }
 
 dependencies {
-    // Google Sheets
+    // Google Sheets API
     compile 'com.google.api-client:google-api-client:1.23.0'
     compile 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
     compile 'com.google.apis:google-api-services-sheets:v4-rev516-1.23.0'
 
-    // BitTorrent
-    compile 'com.turn:ttorrent-core:1.5'
+    // BitTorrent Library
     // https://mvnrepository.com/artifact/com.github.atomashpolskiy/bt-core
     compile group: 'com.github.atomashpolskiy', name: 'bt-core', version: '1.7'
 
