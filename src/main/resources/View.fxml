@@ -4,30 +4,29 @@
 <?import javafx.scene.layout.*?>
 <VBox id="vbox" maxHeight="+Infinity" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="SagarKapasi099.ProjectAutodidact.Controller">
-    <MenuBar fx:id="menuBar">
-        <menus>
-            <Menu text="File">
-                <items>
-                    <MenuItem text="Open Torrent File"/>
-                    <SeparatorMenuItem/>
-                    <MenuItem text="Exit" onAction="#exit"/>
-                </items>
-            </Menu>
-            <Menu text="Settings">
-                <items>
-                    <MenuItem text="Set Google Sheet ID"/>
-                </items>
-            </Menu>
-            <Menu text="About">
-                <items>
-                    <MenuItem text="Project Link (GitHub)"/>
-                </items>
-            </Menu>
-        </menus>
+    <MenuBar prefHeight="25.0" prefWidth="Infinity">
+        <Menu text="File">
+            <MenuItem text="Open Torrent File"/>
+            <SeparatorMenuItem/>
+            <MenuItem onAction="#exit" text="Exit"/>
+        </Menu>
+        <Menu text="Settings">
+            <MenuItem text="Set Google Sheet ID"/>
+        </Menu>
+        <Menu text="About">
+            <MenuItem text="Project Link (GitHub)"/>
+        </Menu>
     </MenuBar>
-    <BorderPane maxHeight="+Infinity" VBox.vgrow="ALWAYS">
-        <center>
-            <ListView prefHeight="200.0" BorderPane.alignment="CENTER" VBox.vgrow="ALWAYS"/>
-        </center>
-    </BorderPane>
+    <TabPane VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="Autodidact Stuff">
+            <BorderPane>
+                <center>
+                    <ListView VBox.vgrow="ALWAYS" BorderPane.alignment="CENTER"/>
+                </center>
+            </BorderPane>
+        </Tab>
+        <Tab text="Torrent Manager">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+        </Tab>
+    </TabPane>
 </VBox>
