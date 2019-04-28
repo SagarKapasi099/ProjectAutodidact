@@ -7,11 +7,11 @@ public class Torrent {
     // Name of the torrent and its directory
     private String displayName;
 
-    private final String magnetLink;
+    private String magnetLink;
 
     private String percentageCompleted;
 
-    private final String dateAdded;
+    private String dateAdded;
 
     public Torrent(String displayName, String magnetLink, String percentageCompleted, String dateAdded) {
         this.displayName = displayName;
@@ -20,7 +20,7 @@ public class Torrent {
         this.dateAdded = dateAdded;
     }
 
-    String getDisplayName() {
+    public String getDisplayName() {
         return displayName;
     }
 
