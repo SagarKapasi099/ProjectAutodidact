@@ -6,7 +6,8 @@ public class Controller {
 
     /**
      * Stops Running Processes And Exits The Program
-     * @param actionEvent
+     *
+     * @param actionEvent Clicked Exit On Menu
      */
     public void exit(ActionEvent actionEvent) {
         System.exit(0);

@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<VBox id="vbox" maxHeight="+Infinity" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="+Infinity" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="SagarKapasi099.ProjectAutodidact.Controller">
-    <MenuBar prefHeight="25.0" prefWidth="Infinity">
+    <MenuBar>
         <Menu text="File">
             <MenuItem text="Open Torrent File"/>
             <SeparatorMenuItem/>
@@ -17,11 +28,24 @@
             <MenuItem text="Project Link (GitHub)"/>
         </Menu>
     </MenuBar>
-    <TabPane VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+    <TabPane side="LEFT" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <Tab text="Dashboard">
+
+        </Tab>
         <Tab text="Autodidact Stuff">
             <BorderPane>
                 <center>
-                    <ListView VBox.vgrow="ALWAYS" BorderPane.alignment="CENTER"/>
+                    <ListView BorderPane.alignment="CENTER" VBox.vgrow="ALWAYS">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="One"/>
+                                <String fx:value="Two"/>
+                                <String fx:value="Three"/>
+                                <String fx:value="Four"/>
+                                <String fx:value="Five"/>
+                            </FXCollections>
+                        </items>
+                    </ListView>
                 </center>
             </BorderPane>
         </Tab>
